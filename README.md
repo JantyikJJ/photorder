@@ -8,7 +8,7 @@
 
 ### DB
 - Host: momo.exmodify.com
-- Port: 5432
+- Port: 9874
 - Username: photorder 
 - Password: Tpm8xb&1bTaI074lWMur 
 - Database: photorder
