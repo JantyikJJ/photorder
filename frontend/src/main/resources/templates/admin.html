@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link th:href="@{/css/style.css}" rel="stylesheet" type="text/css"/>
+<head>
+    <link rel="shortcut icon" th:href="@{/img/logo.ico}" type="image/x-icon">
+    <meta charset="UTF-8">
+    <title th:text="${title}">title</title>
+    <script th:src="@{/js/functions.js}"></script>
+</head>
+<body>
+<header>
+    <nav class="nav">
+        <div class="nav__title" th:text="${title}">title</div>
+        <ul class="nav__list">
+            <li class="nav__item" th:text="${name}">name</li>
+            <li class="nav__item"><a href="javascript:logout()">Logout</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <div class="table-wrapper">
+        <table class="fl-table" id="table">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>userid</th>
+                    <th>fileLocation</th>
+                    <th>status</th>
+                    <th>printWidth</th>
+                    <th>printHeight</th>
+                </tr>
+            <thead>
+            <tbody>
+                <tr>
+                    <td id="tableid">------2---</td>
+                    <td id="tableuserid">---2------</td>
+                    <td id="tablefileLocation">--5--2-----</td>
+                    <td id="tablestatus">In preparation</td>
+                    <td id="tableprintWidth">-2-----2---</td>
+                    <td id="tableprintHeight">--3-------</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+    <div class="update">
+        <form method="post">
+            <div>
+                <label for="userid">User ID
+                    <input type="text" name="userid" id="userid">
+                </label>
+            </div>
+            <div>
+                <label for="status">Status
+                    <select name="status" id="status">
+                        <option value="Recieved">Recieved</option>
+                        <option value="In preparation">In preparation</option>
+                        <option value="In printing">In printing</option>
+                        <option value="Done">Done</option>
+                    </select>
+                </label>
+            </div>
+            <div>
+                <label for="printWidth">printWidth
+                    <input type="text" name="printWidth" id="printWidth">
+                </label>
+            </div>
+            <div>
+                <label for="printHeight">printHeight
+                    <input type="text" name="printHeight" id="printHeight">
+                </label>
+            </div>
+            <input type="submit" value="Update" id="update">
+        </form>
+    </div>
+</main>
+<script th:src="@{/js/update.js}"></script>
+</body>
+</html>
