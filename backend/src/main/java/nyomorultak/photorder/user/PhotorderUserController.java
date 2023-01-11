@@ -37,7 +37,7 @@ public class PhotorderUserController {
 
     @PostMapping("/register")
     public PhotorderResponse<PhotorderUser> registerUser(@RequestBody PhotorderUser user){
-        if (photorderUserService.usernameTaken(user)){
+        if (photorderUserService.usernameTaken(user) || user.password.length() < 8 || user.password.length() > 20 ){
             return new PhotorderResponse<>();
         }
         else {
