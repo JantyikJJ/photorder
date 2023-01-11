@@ -41,8 +41,8 @@ public class ImageController {
             byte[] data = Base64.getDecoder().decode(strings[1]);
 
             try {
-                Files.createDirectories(Paths.get("content"));
-                String path = "content/"
+                Files.createDirectories(Paths.get("public"));
+                String path = "public/"
                         + new SimpleDateFormat("Img-ddMMyy-hhmmss.SSS." + extension).format(new Date());
                 File file = new File(path);
 
