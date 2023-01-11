@@ -42,8 +42,10 @@ public class ImageController {
 
             try {
                 Files.createDirectories(Paths.get("public"));
-                String path = "public/"
-                        + new SimpleDateFormat("Img-ddMMyy-hhmmss.SSS." + extension).format(new Date());
+
+                String fileName = new SimpleDateFormat("Img-ddMMyy-hhmmss.SSS." + extension).format(new Date());
+                String path = "public/" + fileName;
+
                 File file = new File(path);
 
                 OutputStream outputStream = new BufferedOutputStream(new FileOutputStream(file));
@@ -51,7 +53,8 @@ public class ImageController {
                 outputStream.flush();
                 outputStream.close();
 
-                Image img = new Image(request.userId, path, 0, request.printWidth, request.printHeight);
+                Image img = new Image(request.userId, "content/" + fileName,
+                        0, request.printWidth, request.printHeight);
 
                 return new PhotorderResponse<>(service.save(img));
             }
