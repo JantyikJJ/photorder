@@ -27,7 +27,7 @@ public class ImageController {
     }
 
     @PostMapping("/")
-    public PhotorderResponse<Image> postImage(@RequestBody ImageUploadRequest request) {
+    public PhotorderResponse<List<Image>> postImage(@RequestBody ImageUploadRequest request) {
         if (request.image.length() > 0) {
             String base64String = request.image;
             String[] strings = base64String.split(",");
@@ -56,7 +56,7 @@ public class ImageController {
                 Image img = new Image(request.userId, "content/" + fileName,
                         0, request.printWidth, request.printHeight);
 
-                return new PhotorderResponse<>(service.save(img));
+                return new PhotorderResponse<>(List.of(service.save(img)));
             }
             catch (Exception e) {
                 e.printStackTrace();
@@ -67,12 +67,20 @@ public class ImageController {
     }
 
     @GetMapping("/")
-    public List<Image> getImages() {
-        return service.getImages();
+    public PhotorderResponse<List<Image>> getImages() {
+        return new PhotorderResponse<>(service.getImages());
     }
 
     @GetMapping("/{userId}")
-    public List<Image> getImagesByUserId(@PathVariable int userId) {
-        return service.getImages(userId);
+    public PhotorderResponse<List<Image>> getImagesByUserId(@PathVariable int userId) {
+        return new PhotorderResponse<>(service.getImages(userId));
+    }
+
+    @PutMapping("/{imageId}/{status}")
+    public PhotorderResponse<List<Image>> updateImageStatus(@PathVariable int imageId, @PathVariable int status) {
+        Image img = service.updateImage(imageId, status);
+        if (img == null)
+            return new PhotorderResponse<>();
+        else return new PhotorderResponse<>(List.of(img));
     }
 }
