@@ -1,34 +1,340 @@
+@font-face {
+    font-family: poppins;
+    src: url("/Fonts/Poppins/Poppins-Medium.ttf");
+}
+*{
+    padding: 0;
+    margin: 0;
+}
 body {
-    background-color: #333533;
+    background-image: url("/img/photographer-2179204_1920.jpg");
+    background-repeat: revert;
+    background-size: cover;
+    font-family: poppins;
 }
-.table{
+.nav {
+    position: sticky;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    top: 0;
+    color: white;
+}
+.nav {
+    background: #278417;
+}
+header nav ul{
+    margin-right: 30px;
+}
+.nav__title {
+    margin: 0px 30px;
+    font-size: 36pt;
+}
+.nav__item {
+    display: inline-block;
+    margin: 0px 30px;
+    font-size: 24pt;
+}
+.nav__item a{
+    text-decoration: none;
+    color: white;
+}
+
+main{
+    display: inline;
+}
+.form {
+    margin: auto;
+    background-color:rgba(39, 132, 23);
+    border-radius: 20px;
+    box-sizing: border-box;
+    height: auto;
+    padding: 20px;
+    width: 320px;
+    margin-right: 100px;
+    margin-top: 100px;
+    display: none;
+    position: fixed;
+}
+.subtitle a{
+    text-decoration: underline;
+    font-weight: bold;
+    color: white;
+}
+.title {
+    color: #eee;
+    font-size: 36px;
+    font-weight: 600;
+    margin-top: 30px;
+}
+
+.subtitle {
+    color: #eee;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.input-container {
+    height: 50px;
+    position: relative;
+    width: 100%;
+}
+
+.ic1 {
+    margin-top: 40px;
+}
+
+.ic2 {
+    margin-top: 30px;
+}
+
+.input {
+    background-color: #303245;
+    border-radius: 12px;
+    border: 0;
+    box-sizing: border-box;
+    color: #eee;
+    font-size: 18px;
+    height: 100%;
+    outline: 0;
+    padding: 4px 20px 0;
+    width: 100%;
+}
+
+.cut {
+    background-color: rgba(39, 132, 23);
+    border-radius: 10px;
+    height: 20px;
+    left: 20px;
+    position: absolute;
+    top: -20px;
+    transform: translateY(0);
+    transition: transform 200ms;
+    width: 86px;
+}
+
+.cut-short {
+    width: 50px;
+}
+
+.input:focus ~ .cut,
+.input:not(:placeholder-shown) ~ .cut {
+    transform: translateY(8px);
+}
+
+.placeholder {
+    color: white;
+    left: 20px;
+    line-height: 14px;
+    pointer-events: none;
+    position: absolute;
+    transform-origin: 0 50%;
+    transition: transform 200ms, color 200ms;
+    top: 20px;
+}
+
+.input:focus ~ .placeholder,
+.input:not(:placeholder-shown) ~ .placeholder {
+    transform: translateY(-30px) translateX(10px) scale(0.75);
+}
+
+.input:not(:placeholder-shown) ~ .placeholder {
+    color: white;
+}
+
+.input:focus ~ .placeholder {
+    color: white;
+}
+
+.submit {
+    background-color: #303245;
+    border-radius: 12px;
+    border: 0;
+    box-sizing: border-box;
+    color: #eee;
+    cursor: pointer;
+    font-size: 18px;
+    height: 50px;
+    margin-top: 38px;
+// outline: 0;
+    text-align: center;
+    width: 100%;
+}
+
+.submit:active {
+    background-color: #06b;
+}
+.container {
+    background-color: rgba(39,132,23,0.8);
+    width: 60%;
+    min-width: 37.5em;
+    padding: 3.12em 1.87em;
+    position: absolute;
+    transform: translateX(-50%);
+    left: 50%;
+    top: 20%;
+    box-shadow: 0 1.25em 3.43em rgba(0, 0, 0, 0.08);
+    border-radius: 0.5em;
+}
+input[type="file"] {
+    display: none;
+}
+.container label {
+    display: block;
+    position: relative;
+    background-color: #303245;
+    color: white;
+    font-size: 1.1em;
+    text-align: center;
+    width: 16em;
+    padding: 1em 0;
+    border-radius: 0.3em;
+    margin: 0 auto 1em auto;
+    cursor: pointer;
+}
+#image-display {
+    position: relative;
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-evenly;
+    gap: 1.25em;
+    flex-wrap: wrap;
+}
+#image-display figure {
+    width: 25%;
+}
+#image-display img {
+    width: 100%;
+}
+#image-display figcaption {
+    font-size: 0.8em;
+    text-align: center;
+    color: white;
+}
+.active {
+    border: 0.2em dashed #eee;
+}
+#error {
+    text-align: center;
+    color: #ff3030;
+}
+.submit-btn{
+    display: block;
+    position: relative;
+    background-color: #303245;
+    color: white;
+    font-size: 1.1em;
+    width: 16em;
+    padding: 1em 0;
+    border-radius: 0.3em;
+    margin: 0 auto 1em auto;
+    margin-top: 20px;
+    cursor: pointer;
+    border: 0.2em dashed #303245;
+
+}
+.table-wrapper{
+    margin-left: 20px;
+    margin-top: 20px;
+    display: inline-flex;
+    box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
+}
+
+.fl-table {
+    border-radius: 5px;
+    font-size: 14pt;
+    font-weight: normal;
+    border: none;
     border-collapse: collapse;
-    font-size: 0.9em;
-    font-family: sans-serif;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 25px;
-    min-width: 400px;
-    box-shadow: 0 0 20px rgba(0,0,0,0.15);
+    width: 100%;
+    max-width: 100%;
+    white-space: nowrap;
+    background-color: white;
 }
-.table thead tr{
-    background-color: #F5CB5C;
-    color: #333533;
-    text-align: left;
+
+.fl-table td, .fl-table th {
+    text-align: center;
+    padding: 20px;
 }
-.table th,
-.table td{
-    padding: 12px 15px;
+
+.fl-table td {
+    border-right: 1px solid #f8f8f8;
+    font-size: 12pt;
+
 }
-.table tbody tr{
-    border-bottom: 1px solid #dddddd;
+.fl-table td a{
+    text-decoration: none;
+    color: black;
 }
-.table tbody tr:nth-of-type(even){
-    background-color: #CFDBD5;
+
+.fl-table thead th {
+    color: white;
+    background: rgba(39,132,23,0.8);
 }
-.table tbody tr:nth-of-type(odd){
-    background-color: #E8EDDF;
+
+
+.fl-table thead th:nth-child(odd) {
+    color: white;
+    background: #303245;
 }
-.table tbody tr:last-of-type{
-    border-bottom: 2px solid #F5CB5C;
+
+.fl-table tr:nth-child(even) {
+    background: #F8F8F8;
+}
+.main{
+    display: flex;
+    justify-content: right;
+    margin: 20px;
+}
+.update {
+    position:absolute;
+    right: 5%;
+    top: 20%;
+    width: 400px;
+    height: auto;
+    background-color: rgba(39,132,23,0.9);
+    border-radius: 6px;
+
+}
+.update label,input{
+    display:flex;
+    flex-direction:column;
+
+}
+.update input{
+    height: 25px;
+    width: auto;
+    font-size: 10pt;
+}
+.update label{
+    color: white;
+}
+.update div label select option,select{
+    font-family: poppins;
+    height: 25px;
+    font-size: 10pt;
+}
+
+.update form div{
+    margin: 20px;
+}
+#update{
+    float: right;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    width: 100px;
+    height: 50px;
+    background: #0066bb;
+    border-color: #0066bb;
+    color: white;
+    font-size: 1.1em;
+    border-radius: 0.3em;
+}
+.staff{
+    color: white;
+    width: 25px;
+    height: 25px;
 }

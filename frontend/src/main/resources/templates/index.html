@@ -2,30 +2,66 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <link th:href="@{/css/style.css}" rel="stylesheet" type="text/css"/>
 <head>
+    <link rel="shortcut icon" th:href="@{/img/logo.ico}" type="image/x-icon">
     <meta charset="UTF-8">
-    <title>AutóNyilvántartás</title>
-
+    <title th:text="${title}">title</title>
+    <script th:src="@{/js/functions.js}"></script>
 </head>
 <body>
-<table class="table">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Dátum</th>
-            <th>Km állás</th>
-            <th>Márka</th>
-            <th>Rendszám</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>id</td>
-            <td>datum</td>
-            <td>km</td>
-            <td>marka</td>
-            <td>rendszam</td>
-        </tr>
-    </tbody>
-</table>
+    <header>
+        <nav class="nav">
+            <div class="nav__title" th:text="${title}">title</div>
+            <ul class="nav__list">
+                <li class="nav__item"><a href="javascript:sign()">Signup</a></li>
+                <li class="nav__item"><a href="javascript:log()">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="main">
+        <div class="form" id="signup">
+            <form method="post" th:action="@{/register}" th:object="${user}">
+                <div class="title">Sign up</div>
+                <div class="subtitle">If you already have one</div>
+                <div class="subtitle"><a href="javascript:log()">Log in</a></div>
+                <div class="input-container ic1">
+                    <input id="username-reg" class="input" type="text" placeholder=" " th:field="*{name}" />
+                    <div class="cut"></div>
+                    <label for="username-reg" class="placeholder">Username</label>
+                </div>
+                <div class="input-container ic2" style="display: inline-block">
+                    <label for="staff" class="staff">Staff</label>
+                    <input id="staff" class="staff" type="checkbox" placeholder=" " th:field="*{isStaff}" />
+
+                </div>
+                <div class="input-container ic2">
+                    <input id="password" class="input" type="password" placeholder=" " th:field="*{password}"/>
+                    <div class="cut"></div>
+                    <label for="password" class="placeholder">Password</label>
+                </div>
+                <input type="submit" class="submit" value="submit" id="submit-reg">
+            </form>
+        </div>
+        <div class="form" id="login">
+            <form method="post" th:action="@{/login}" th:object="${user}">
+                <div class="title">Log in</div>
+                <div class="subtitle">If you forgot then</div>
+                <div class="subtitle"><a href="javascript:sign()">Sign up</a></div>
+                <div class="input-container ic1">
+                    <input id="username-log" class="input" type="text" placeholder=" " th:field="*{name}" />
+                    <div class="cut"></div>
+                    <label for="username-log" class="placeholder">Username</label>
+                </div>
+                <div class="input-container ic2">
+                    <input id="password-log" class="input" type="password" placeholder=" " th:field="*{password}" />
+                    <div class="cut"></div>
+                    <label for="password-log" class="placeholder">Password</label>
+                </div>
+                <input type="submit" class="submit" value="submit" id="submit-log">
+            </form>
+        </div>
+
+    </main>
+    <footer>
+    </footer>
 </body>
 </html>

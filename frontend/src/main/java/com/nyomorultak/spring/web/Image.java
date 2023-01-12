@@ -1,0 +1,57 @@
+package com.nyomorultak.spring.web;
+
+import java.io.Serializable;
+
+public class Image implements Serializable {
+    private int id;
+    private int userId;
+    private String fileLocation;
+    private int status;
+    private int printWidth;
+    private int printHeight;
+
+    public Image(int id, int userId, String fileLocation, int status, int printWidth, int printHeight) {
+        this.id = id;
+        this.userId = userId;
+        this.fileLocation = fileLocation;
+        this.status = status;
+        this.printWidth = printWidth;
+        this.printHeight = printHeight;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public String getFileLocation() {
+        return fileLocation;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public int getPrintWidth() {
+        return printWidth;
+    }
+
+    public int getPrintHeight() {
+        return printHeight;
+    }
+
+    @Override
+    public String toString() {
+        return "photo{" +
+                "id=" + id +
+                ", userId=" + userId +
+                ", fileLocation='" + fileLocation + '\'' +
+                ", status=" + status +
+                ", printWidth=" + printWidth +
+                ", printHeight=" + printHeight +
+                '}';
+    }
+}

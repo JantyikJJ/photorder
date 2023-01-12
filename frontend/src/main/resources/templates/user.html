@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<link th:href="@{/css/style.css}" rel="stylesheet" type="text/css"/>
+<head>
+  <link rel="shortcut icon" th:href="@{/img/logo.ico}" type="image/x-icon">
+  <meta charset="UTF-8">
+  <title th:text="${title}">title</title>
+  <script th:src="@{/js/functions.js}"></script>
+
+</head>
+<body>
+<header>
+  <nav class="nav">
+    <div class="nav__title" th:text="${title}">title</div>
+    <ul class="nav__list">
+      <li class="nav__item" th:text="${name}">name</li>
+      <li class="nav__item"><a href="javascript:logout()">Logout</a></li>
+    </ul>
+  </nav>
+</header>
+<main class="main">
+  <div class="container">
+    <form method="post">
+      <input type="file" class="upload-button" id="upload-button" multiple accept="image/*" />
+      <label for="upload-button"><i class="fa-solid fa-upload"></i>&nbsp; Choose Or Drop Photos
+      </label>
+      <div id="error"></div>
+      <div id="image-display"></div>
+      <input type="submit" value="Upload" class="submit-btn">
+    </form>
+  </div>
+</main>
+<script th:src="@{/js/filedrop.js}"></script>
+</body>
+</html>
