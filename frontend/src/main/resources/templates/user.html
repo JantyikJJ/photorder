@@ -14,20 +14,51 @@
     <div class="nav__title" th:text="${title}">title</div>
     <ul class="nav__list">
       <li class="nav__item" th:text="${name}">name</li>
-      <li class="nav__item"><a href="javascript:logout()">Logout</a></li>
+      <li class="nav__item"><a href="/logout">Logout</a></li>
     </ul>
   </nav>
 </header>
-<main class="main">
+<main class="main user-main">
   <div class="container">
-    <form method="post">
+    <form method="post" th:action="@{/user}" th:object="${uploadImage}">
+      <div class="size-inputs">
+        <label for="printWidth" class="size">Print width (px)</label>
+        <input type="number" id="printWidth" name="printWidth" value="0" th:field="*{printWidth}" />
+        <label for="printHeight" class="size">Print height  (px)</label>
+        <input type="number" id="printHeight" name="printHeight" value="0" th:field="*{printHeight}" />
+      </div>
+
       <input type="file" class="upload-button" id="upload-button" multiple accept="image/*" />
-      <label for="upload-button"><i class="fa-solid fa-upload"></i>&nbsp; Choose Or Drop Photos
-      </label>
+      <input type="hidden" id="fileLocation" th:field="*{image}" />
+      <label for="upload-button">Choose Or Drop Photos</label>
+
       <div id="error"></div>
       <div id="image-display"></div>
+
       <input type="submit" value="Upload" class="submit-btn">
     </form>
+  </div>
+  <div></div>
+  <div class="table-wrapper user-table-wrapper">
+    <table class="fl-table" id="table">
+      <thead>
+      <tr>
+        <th>Image</th>
+        <th>Status</th>
+        <th>Print width (px)</th>
+        <th>Print height (px)</th>
+      </tr>
+      <thead>
+      <tbody>
+      <tr th:each="image: ${images}">
+        <td id="tablefileLocation"><img th:src="${image.fileLocation}" height="200px" /></td>
+        <td id="tablestatus" th:id="${image.status}" th:text="${image.statusString}">status</td>
+        <td id="tableprintWidth" th:text="${image.printWidth}">printWidth</td>
+        <td id="tableprintHeight" th:text="${image.printHeight}">printHeight</td>
+      </tr>
+
+      </tbody>
+    </table>
   </div>
 </main>
 <script th:src="@{/js/filedrop.js}"></script>

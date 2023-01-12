@@ -19,7 +19,7 @@ public class ImageService {
         return repository.findAll();
     }
     public List<Image> getImages(int userId) {
-        return repository.findAll();
+        return repository.findImagesByUserId(userId).stream().toList();
     }
     public Image save(Image image) {
         return repository.save(image);

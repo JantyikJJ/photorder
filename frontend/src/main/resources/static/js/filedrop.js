@@ -19,6 +19,7 @@ const fileHandler = (file, name, type) => {
         let imageContainer = document.createElement("figure");
         let img = document.createElement("img");
         img.src = reader.result;
+        document.querySelector("#fileLocation").value = img.src;
         imageContainer.appendChild(img);
         imageContainer.innerHTML += `<figcaption>${name}</figcaption>`;
         imageDisplay.appendChild(imageContainer);
@@ -28,9 +29,8 @@ const fileHandler = (file, name, type) => {
 //Upload Button
 uploadButton.addEventListener("change", () => {
     imageDisplay.innerHTML = "";
-    Array.from(uploadButton.files).forEach((file) => {
-        fileHandler(file, file.name, file.type);
-    });
+    let file = Array.from(uploadButton.files)[0]
+    fileHandler(file, file.name, file.type);
 });
 
 container.addEventListener(
@@ -72,9 +72,8 @@ container.addEventListener(
         let draggedData = e.dataTransfer;
         let files = draggedData.files;
         imageDisplay.innerHTML = "";
-        Array.from(files).forEach((file) => {
-            fileHandler(file, file.name, file.type);
-        });
+        files = Array.from(files);
+        fileHandler(files[0], files[0].name, files[0].type)
     },
     false
 );

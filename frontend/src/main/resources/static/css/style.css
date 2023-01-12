@@ -158,9 +158,11 @@ main{
     font-size: 18px;
     height: 50px;
     margin-top: 38px;
-// outline: 0;
     text-align: center;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .submit:active {
@@ -171,17 +173,14 @@ main{
     width: 60%;
     min-width: 37.5em;
     padding: 3.12em 1.87em;
-    position: absolute;
-    transform: translateX(-50%);
-    left: 50%;
-    top: 20%;
     box-shadow: 0 1.25em 3.43em rgba(0, 0, 0, 0.08);
     border-radius: 0.5em;
+    height: fit-content;
 }
 input[type="file"] {
     display: none;
 }
-.container label {
+.container label:not(.size) {
     display: block;
     position: relative;
     background-color: #303245;
@@ -194,6 +193,19 @@ input[type="file"] {
     margin: 0 auto 1em auto;
     cursor: pointer;
 }
+.container .size-inputs {
+    display: flex;
+    justify-content: center;
+    background-color: #303245;
+    padding: 20px;
+    border-radius: 5px;
+    width: fit-content;
+    margin: 0 auto 20px auto;
+    color: white;
+}
+.container .size-inputs * {
+    margin: 0 10px;
+}
 #image-display {
     position: relative;
     width: 90%;
@@ -204,10 +216,12 @@ input[type="file"] {
     flex-wrap: wrap;
 }
 #image-display figure {
-    width: 25%;
+    width: auto;
 }
 #image-display img {
     width: 100%;
+    max-height: 300px;
+    object-fit: contain;
 }
 #image-display figcaption {
     font-size: 0.8em;
@@ -227,11 +241,9 @@ input[type="file"] {
     background-color: #303245;
     color: white;
     font-size: 1.1em;
-    width: 16em;
-    padding: 1em 0;
+    padding: 1em 3em;
     border-radius: 0.3em;
-    margin: 0 auto 1em auto;
-    margin-top: 20px;
+    margin: 20px auto 1em;
     cursor: pointer;
     border: 0.2em dashed #303245;
 
@@ -241,6 +253,9 @@ input[type="file"] {
     margin-top: 20px;
     display: inline-flex;
     box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
+}
+.user-table-wrapper {
+    width: 60%;
 }
 
 .fl-table {
@@ -297,29 +312,24 @@ input[type="file"] {
     height: auto;
     background-color: rgba(39,132,23,0.9);
     border-radius: 6px;
-
+    padding: 20px 20px 0;
 }
 .update label,input{
     display:flex;
     flex-direction:column;
-
 }
 .update input{
     height: 25px;
     width: auto;
     font-size: 10pt;
 }
-.update label{
+.update label {
     color: white;
 }
-.update div label select option,select{
+.update select option,select{
     font-family: poppins;
     height: 25px;
     font-size: 10pt;
-}
-
-.update form div{
-    margin: 20px;
 }
 #update{
     float: right;
@@ -332,9 +342,18 @@ input[type="file"] {
     color: white;
     font-size: 1.1em;
     border-radius: 0.3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .staff{
     color: white;
     width: 25px;
     height: 25px;
+}
+
+
+.main.user-main {
+    flex-wrap: wrap;
+    justify-content: center;
 }

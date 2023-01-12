@@ -3,6 +3,8 @@ package com.nyomorultak.spring.web;
 import java.io.Serializable;
 
 public class Image implements Serializable {
+    public final String[] STATUSES = new String[] { "Received", "In preparation", "In printing", "Done" };
+
     private int id;
     private int userId;
     private String fileLocation;
@@ -10,6 +12,7 @@ public class Image implements Serializable {
     private int printWidth;
     private int printHeight;
 
+    public Image() { }
     public Image(int id, int userId, String fileLocation, int status, int printWidth, int printHeight) {
         this.id = id;
         this.userId = userId;
@@ -28,11 +31,27 @@ public class Image implements Serializable {
     }
 
     public String getFileLocation() {
-        return fileLocation;
+        return "https://photorder-api.exmodify.com/" + fileLocation;
     }
 
     public int getStatus() {
         return status;
+    }
+
+    public String getStatusString() {
+        if (status < 0) return STATUSES[0];
+        else if (status >= STATUSES.length) return STATUSES[STATUSES.length - 1];
+
+        return STATUSES[status];
+    }
+    public void setStatusString(String statusString) {
+        int status = STATUSES.length - 1;
+        for (; status > 0; status--) {
+            if (statusString.equalsIgnoreCase(STATUSES[status])) {
+                break;
+            }
+        }
+        this.status = status;
     }
 
     public int getPrintWidth() {

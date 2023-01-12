@@ -1,15 +1,10 @@
-var table = document.getElementById("table"),rIndex;
+const table = document.getElementById("table");
 
-    for(var i = 1; i < table.rows.length; i++)
+for(let i = 1; i < table.rows.length; i++)
+{
+    table.rows[i].onclick = function()
     {
-        table.rows[i].onclick = function()
-        {
-            rIndex = this.rowIndex;
-            console.log(rIndex);
-
-            document.getElementById("userid").value = this.cells[1].innerHTML;
-            document.getElementById("status").value = this.cells[3].innerHTML;
-            document.getElementById("printWidth").value = this.cells[4].innerHTML;
-            document.getElementById("printHeight").value = this.cells[5].innerHTML;
-        };
-    }
+        document.querySelector(".update #id").value = this.cells[0].innerHTML;
+        document.querySelector(".update #status").selectedIndex = this.cells[3].id;
+    };
+}

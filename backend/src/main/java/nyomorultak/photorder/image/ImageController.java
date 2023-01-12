@@ -43,7 +43,10 @@ public class ImageController {
             try {
                 Files.createDirectories(Paths.get("public"));
 
-                String fileName = new SimpleDateFormat("Img-ddMMyy-hhmmss.SSS." + extension).format(new Date());
+                String fileName = "Img-"
+                        + new SimpleDateFormat("ddMMyy-hhmmss.SSS").format(new Date())
+                        + "."
+                        + extension;
                 String path = "public/" + fileName;
 
                 File file = new File(path);

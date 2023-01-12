@@ -13,7 +13,7 @@
         <div class="nav__title" th:text="${title}">title</div>
         <ul class="nav__list">
             <li class="nav__item" th:text="${name}">name</li>
-            <li class="nav__item"><a href="javascript:logout()">Logout</a></li>
+            <li class="nav__item"><a href="/logout">Logout</a></li>
         </ul>
     </nav>
 </header>
@@ -34,8 +34,8 @@
                 <tr th:each="image: ${images}">
                     <td id="tableid" th:text="${image.id}">id</td>
                     <td id="tableuserid" th:text="${image.userId}">userId</td>
-                    <td id="tablefileLocation" th:text="${image.fileLocation}">fileLocation</td>
-                    <td id="tablestatus" th:text="${image.status}">status</td>
+                    <td id="tablefileLocation"><img th:src="${image.fileLocation}" height="300px" /></td>
+                    <td id="tablestatus" th:id="${image.status}" th:text="${image.statusString}">status</td>
                     <td id="tableprintWidth" th:text="${image.printWidth}">printWidth</td>
                     <td id="tableprintHeight" th:text="${image.printHeight}">printHeight</td>
                 </tr>
@@ -44,32 +44,23 @@
         </table>
     </div>
     <div class="update">
-        <form method="post">
-            <div>
-                <label for="userid">User ID
-                    <input type="text" name="userid" id="userid">
-                </label>
-            </div>
-            <div>
-                <label for="status">Status
-                    <select name="status" id="status">
-                        <option value="Recieved">Recieved</option>
-                        <option value="In preparation">In preparation</option>
-                        <option value="In printing">In printing</option>
-                        <option value="Done">Done</option>
-                    </select>
-                </label>
-            </div>
-            <div>
-                <label for="printWidth">printWidth
-                    <input type="text" name="printWidth" id="printWidth">
-                </label>
-            </div>
-            <div>
-                <label for="printHeight">printHeight
-                    <input type="text" name="printHeight" id="printHeight">
-                </label>
-            </div>
+        <form method="post" th:action="@{/admin}" th:object="${editImage}">
+            <label for="id">Image ID</label>
+            <input type="text" name="id" id="id" th:field="*{id}">
+
+            <label for="status">Status</label>
+            <select name="status" id="status" th:field="*{status}">
+                <option value="0">Received</option>
+                <option value="1">In preparation</option>
+                <option value="2">In printing</option>
+                <option value="3">Done</option>
+            </select>
+
+            <input type="hidden" name="fileLocation" id="fileLocation" th:field="*{fileLocation}">
+            <input type="hidden" name="printWidth" id="printWidth" th:field="*{printWidth}">
+            <input type="hidden" name="printHeight" id="printHeight" th:field="*{printHeight}">
+            <input type="hidden" name="userId" id="userId" th:field="*{userId}">
+
             <input type="submit" value="Update" id="update">
         </form>
     </div>
