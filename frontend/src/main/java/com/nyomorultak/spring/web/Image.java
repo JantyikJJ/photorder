@@ -1,15 +1,22 @@
 package com.nyomorultak.spring.web;
 
-public class user {
-    public int id;
-    public int userId;
-    public String fileLocation;
-    public int status;
-    public int printWidth;
-    public int printHeight;
+import java.io.Serializable;
 
+public class Image implements Serializable {
+    private int id;
+    private int userId;
+    private String fileLocation;
+    private int status;
+    private int printWidth;
+    private int printHeight;
 
-    public user() {
+    public Image(int id, int userId, String fileLocation, int status, int printWidth, int printHeight) {
+        this.id = id;
+        this.userId = userId;
+        this.fileLocation = fileLocation;
+        this.status = status;
+        this.printWidth = printWidth;
+        this.printHeight = printHeight;
     }
 
     public int getId() {
@@ -38,7 +45,7 @@ public class user {
 
     @Override
     public String toString() {
-        return "user{" +
+        return "photo{" +
                 "id=" + id +
                 ", userId=" + userId +
                 ", fileLocation='" + fileLocation + '\'' +

@@ -19,22 +19,22 @@
     </header>
     <main class="main">
         <div class="form" id="signup">
-            <form action="" method="post">
+            <form method="post" th:action="@{/register}" th:object="${user}">
                 <div class="title">Sign up</div>
                 <div class="subtitle">If you already have one</div>
                 <div class="subtitle"><a href="javascript:log()">Log in</a></div>
                 <div class="input-container ic1">
-                    <input id="username-reg" class="input" type="text" placeholder=" " />
+                    <input id="username-reg" class="input" type="text" placeholder=" " th:field="*{name}" />
                     <div class="cut"></div>
                     <label for="username-reg" class="placeholder">Username</label>
                 </div>
-                <div class="input-container ic2">
-                    <input id="email" class="input" type="email" placeholder=" " />
-                    <div class="cut cut-short"></div>
-                    <label for="email" class="placeholder">Email</label>
+                <div class="input-container ic2" style="display: inline-block">
+                    <label for="staff" class="staff">Staff</label>
+                    <input id="staff" class="staff" type="checkbox" placeholder=" " th:field="*{isStaff}" />
+
                 </div>
                 <div class="input-container ic2">
-                    <input id="password" class="input" type="text" placeholder=" " />
+                    <input id="password" class="input" type="password" placeholder=" " th:field="*{password}"/>
                     <div class="cut"></div>
                     <label for="password" class="placeholder">Password</label>
                 </div>
@@ -42,17 +42,17 @@
             </form>
         </div>
         <div class="form" id="login">
-            <form action="" method="get">
+            <form method="post" th:action="@{/login}" th:object="${user}">
                 <div class="title">Log in</div>
                 <div class="subtitle">If you forgot then</div>
                 <div class="subtitle"><a href="javascript:sign()">Sign up</a></div>
                 <div class="input-container ic1">
-                    <input id="username-log" class="input" type="text" placeholder=" " />
+                    <input id="username-log" class="input" type="text" placeholder=" " th:field="*{name}" />
                     <div class="cut"></div>
                     <label for="username-log" class="placeholder">Username</label>
                 </div>
                 <div class="input-container ic2">
-                    <input id="password-log" class="input" type="text" placeholder=" " />
+                    <input id="password-log" class="input" type="password" placeholder=" " th:field="*{password}" />
                     <div class="cut"></div>
                     <label for="password-log" class="placeholder">Password</label>
                 </div>

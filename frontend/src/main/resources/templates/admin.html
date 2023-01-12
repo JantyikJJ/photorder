@@ -31,13 +31,13 @@
                 </tr>
             <thead>
             <tbody>
-                <tr>
-                    <td id="tableid">------2---</td>
-                    <td id="tableuserid">---2------</td>
-                    <td id="tablefileLocation">--5--2-----</td>
-                    <td id="tablestatus">In preparation</td>
-                    <td id="tableprintWidth">-2-----2---</td>
-                    <td id="tableprintHeight">--3-------</td>
+                <tr th:each="image: ${images}">
+                    <td id="tableid" th:text="${image.id}">id</td>
+                    <td id="tableuserid" th:text="${image.userId}">userId</td>
+                    <td id="tablefileLocation" th:text="${image.fileLocation}">fileLocation</td>
+                    <td id="tablestatus" th:text="${image.status}">status</td>
+                    <td id="tableprintWidth" th:text="${image.printWidth}">printWidth</td>
+                    <td id="tableprintHeight" th:text="${image.printHeight}">printHeight</td>
                 </tr>
 
             </tbody>
